@@ -14,10 +14,10 @@ module.exports = {
       files: [
         '.eslintrc.{js,cjs}'
       ],
-      rules: [
-        'i18next/no-literal-string:off',
+      rules: {
+        'i18next/no-literal-string':'off',
         //означает что в i18 не было перевода в тестах
-      ],
+      },
       parserOptions: {
         sourceType: 'script'
       }
