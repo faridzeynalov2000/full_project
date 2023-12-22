@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import {
   LOCAL_STORAGE_THEME_KEY,
   Theme,
-  ThemeContext,
+  ThemeContext
 } from '../lib/ThemeContext'
 import { type FC, useMemo, useState } from 'react'
 
@@ -13,16 +14,16 @@ const ThemeProvider: FC = ({ children }) => {
 
   const defaultProps = useMemo(
     () => ({
-      theme: theme,
-      setTheme: setTheme
-        }),
+      theme,
+      setTheme
+    }),
     [theme]
   )
 
   return (
-        <ThemeContext.Provider value={defaultProps}>
-          {children}
-      </ThemeContext.Provider>
+    <ThemeContext.Provider value={defaultProps}>
+      {children}
+    </ThemeContext.Provider>
   )
 }
 

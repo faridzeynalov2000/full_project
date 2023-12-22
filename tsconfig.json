@@ -47,6 +47,6 @@
     "build/**/*.js",
     "webpack.config.ts",
     "config/jest/jest.config.ts",
-    "./config/jest/setupTests.ts"
+    "./config/jest/setupTests.ts",
   ],
 }

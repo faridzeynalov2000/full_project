@@ -1,11 +1,12 @@
-import React from 'react';
-import { StoryFn } from '@storybook/react';
-import { Theme } from 'app/providers/ThemeProvider';
+/* eslint-disable react/display-name */
+import React from 'react'
+import { StoryFn } from '@storybook/react'
+import { Theme } from 'app/providers/ThemeProvider'
 
 export const ThemeDecorator = (theme: Theme) => (StoryComponent: StoryFn) => (
-//Добавлено явное указание, что функция ThemeDecorator возвращает JSX.Element.
+// Добавлено явное указание, что функция ThemeDecorator возвращает JSX.Element.
 
   <div className={`app ${theme}`}>
     <StoryComponent />
   </div>
-);
+)

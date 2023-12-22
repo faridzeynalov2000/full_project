@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable i18next/no-literal-string */
 module.exports = {
   env: {
@@ -12,14 +13,19 @@ module.exports = {
         node: true
       },
       files: [
-        '.eslintrc.{js,cjs}'
+        '.eslintrc.{js,cjs}',
+        '<tsconfigRootDir>/config\storybook\webpack.config.ts'
       ],
       rules: {
         'i18next/no-literal-string': 'off'
         // означает что в i18 не было перевода в тестах
       },
       parserOptions: {
-        sourceType: 'script'
+        sourceType: 'script',
+        project: [
+          path.resolve(__dirname, '<tsconfigRootDir>', 'tsconfig.json')
+          //Это предполагает, что <tsconfigRootDir> является путем относительно текущего рабочего каталога. Если <tsconfigRootDir> является переменной окружения, также можно использовать ее значение вместо закодированного пути.
+        ]
       }
     }
   ],
