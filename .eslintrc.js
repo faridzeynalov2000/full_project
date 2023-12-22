@@ -15,8 +15,8 @@ module.exports = {
         '.eslintrc.{js,cjs}'
       ],
       rules: {
-        'i18next/no-literal-string':'off',
-        //означает что в i18 не было перевода в тестах
+        'i18next/no-literal-string': 'off'
+        // означает что в i18 не было перевода в тестах
       },
       parserOptions: {
         sourceType: 'script'
@@ -55,6 +55,7 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/consistent-type-imports': 'error',
     'i18next/no-literal-string': [
       'error',
       {
