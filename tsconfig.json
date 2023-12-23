@@ -48,5 +48,8 @@
     "webpack.config.ts",
     "config/jest/jest.config.ts",
     "./config/jest/setupTests.ts",
+    "./config/storybook/main.ts",
+    "./config/storybook/webpack.config.ts",
+    "./config/storybook/preview.ts"
   ],
 }
