@@ -1,24 +1,79 @@
-import { useTheme } from 'app/providers/ThemeProvider'
-import { AppRouter } from 'app/providers/router'
-import { Suspense } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { Navbar } from 'widgets/Navbar'
-import { Sidebar } from 'widgets/Sidebar'
-import './styles/index.scss'
+import { getUserInited, initAuthData } from 'entities/User';
+import { memo, Suspense, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { AppLoaderLayout } from 'shared/layouts/AppLoaderLayout';
+import { MainLayout } from 'shared/layouts/MainLayout';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { ToggleFeatures } from 'shared/lib/features';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useTheme } from 'shared/lib/hooks/useTheme/useTheme';
+import { Navbar } from 'widgets/Navbar';
+import { PageLoader } from 'widgets/PageLoader';
+import { Sidebar } from 'widgets/Sidebar';
+import { useAppToolbar } from './lib/useAppToolbar';
+import { AppRouter } from './providers/router';
+import { withTheme } from './providers/ThemeProvider/ui/withTheme';
 
-const App = () => {
-  const { theme } = useTheme()
-  return (
-    <div className={classNames('app', {}, [theme])}>
-      <Suspense fallback=''>
-        <Navbar />
-        <div className='content-page'>
-          <Sidebar />
-          <AppRouter />
-        </div>
-      </Suspense>
-    </div>
-  )
-}
+const App = memo(() => {
+    const { theme } = useTheme();
+    const dispatch = useAppDispatch();
+    const inited = useSelector(getUserInited);
+    const toolbar = useAppToolbar();
 
-export default App
+    useEffect(() => {
+        if (!inited) {
+            dispatch(initAuthData());
+        }
+    }, [dispatch, inited]);
+
+    if (!inited) {
+        return (
+            <ToggleFeatures
+                feature="isAppRedesigned"
+                on={
+                    <div
+                        id="app"
+                        className={classNames('app_redesigned', {}, [theme])}
+                    >
+                        <AppLoaderLayout />{' '}
+                    </div>
+                }
+                off={<PageLoader />}
+            />
+        );
+    }
+
+    return (
+        <ToggleFeatures
+            feature="isAppRedesigned"
+            off={
+                <div id="app" className={classNames('app', {}, [theme])}>
+                    <Suspense fallback="">
+                        <Navbar />
+                        <div className="content-page">
+                            <Sidebar />
+                            <AppRouter />
+                        </div>
+                    </Suspense>
+                </div>
+            }
+            on={
+                <div
+                    id="app"
+                    className={classNames('app_redesigned', {}, [theme])}
+                >
+                    <Suspense fallback="">
+                        <MainLayout
+                            header={<Navbar />}
+                            content={<AppRouter />}
+                            sidebar={<Sidebar />}
+                            toolbar={toolbar}
+                        />
+                    </Suspense>
+                </div>
+            }
+        />
+    );
+});
+
+export default withTheme(App);

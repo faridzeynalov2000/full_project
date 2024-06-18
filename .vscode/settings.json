@@ -1,13 +1,6 @@
 {
-	"cSpell.ignoreWords": [
-		"languagedetector",
-		"stylelint",
-		"svgr",
-		"ulbi",
-		"лоадеры"
-	],
-	"git.ignoreLimitWarning": true,
-	"i18n-ally.localesPaths": ["public/locales", "src/shared/config/i18n"],
-	"i18n-ally.keystyle": "nested",
-	"cSpell.words": ["testid"]
+  "i18n-ally.localesPaths": [
+    "public/locales",
+    "src/shared/config/i18n"
+  ]
 }

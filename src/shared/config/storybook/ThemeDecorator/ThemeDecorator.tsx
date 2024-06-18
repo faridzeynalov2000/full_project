@@ -1,12 +1,13 @@
-/* eslint-disable react/display-name */
-import React from 'react'
-import { StoryFn } from '@storybook/react'
-import { Theme } from 'app/providers/ThemeProvider'
+import { Story } from '@storybook/react';
+// eslint-disable-next-line ulbi-tv-plugin/layer-imports
+import { ThemeProvider } from 'app/providers/ThemeProvider';
+import { Theme } from 'shared/const/theme';
 
-export const ThemeDecorator = (theme: Theme) => (StoryComponent: StoryFn) => (
-// Добавлено явное указание, что функция ThemeDecorator возвращает JSX.Element.
-
-  <div className={`app ${theme}`}>
-    <StoryComponent />
-  </div>
-)
+export const ThemeDecorator = (theme: Theme) => (StoryComponent: Story) =>
+    (
+        <ThemeProvider initialTheme={theme}>
+            <div className={`app ${theme}`}>
+                <StoryComponent />
+            </div>
+        </ThemeProvider>
+    );

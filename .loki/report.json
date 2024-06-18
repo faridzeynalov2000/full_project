@@ -1,0 +1,32 @@
+{
+    "newItems": [],
+    "deletedItems": [],
+    "passedItems": [],
+    "failedItems": [
+        "chrome_iphone7_Example_Page_Logged_In.png",
+        "chrome_iphone7_Example_Page_Logged_Out.png",
+        "chrome_laptop_Example_Page_Logged_In.png",
+        "chrome_laptop_Example_Page_Logged_Out.png"
+    ],
+    "expectedItems": [
+        "chrome_iphone7_Example_Page_Logged_In.png",
+        "chrome_iphone7_Example_Page_Logged_Out.png",
+        "chrome_laptop_Example_Page_Logged_In.png",
+        "chrome_laptop_Example_Page_Logged_Out.png"
+    ],
+    "actualItems": [
+        "chrome_iphone7_Example_Page_Logged_In.png",
+        "chrome_iphone7_Example_Page_Logged_Out.png",
+        "chrome_laptop_Example_Page_Logged_In.png",
+        "chrome_laptop_Example_Page_Logged_Out.png"
+    ],
+    "diffItems": [
+        "chrome_iphone7_Example_Page_Logged_In.png",
+        "chrome_iphone7_Example_Page_Logged_Out.png",
+        "chrome_laptop_Example_Page_Logged_In.png",
+        "chrome_laptop_Example_Page_Logged_Out.png"
+    ],
+    "actualDir": "current",
+    "expectedDir": "reference",
+    "diffDir": "difference"
+}
